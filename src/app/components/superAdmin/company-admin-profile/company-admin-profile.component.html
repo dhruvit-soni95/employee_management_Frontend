@@ -1,0 +1,526 @@
+<app-superadmin-header></app-superadmin-header>
+<!-- 
+<div class="container  mx-auto px-2">
+    <div class="flex flex-wrap">
+        <div class="flex items-center py-4 w-full">
+            <div class="w-full">
+                <div class="">
+                    <div class="flex flex-wrap justify-between">
+                        <div class="items-center ">
+                            <h1 class="font-semibold text-xl mb-1 block dark:text-slate-100">Profile</h1>
+                            <ol class="list-reset flex text-sm">
+                                <li><a href="#" class="text-gray-500">T-Wind</a></li>
+                                <li><span class="text-gray-500 mx-2">/</span></li>
+                                <li class="text-gray-500">Pages</li>
+                                <li><span class="text-gray-500 mx-2">/</span></li>
+                                <li class="text-blue-600 hover:text-blue-700">Profile</li>
+                            </ol>
+                        </div>
+                        <div class="flex items-center">
+                            <button
+                                class="px-3 py-2 lg:px-4 bg-blue-500 text-white text-sm font-semibold rounded hover:bg-blue-600">Create
+                                New</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+<div class="container mx-auto px-2 min-h-[calc(100vh-138px)]  relative pb-14 ">
+    <div class="grid md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4 ">
+        <div class="sm:col-span-12  md:col-span-12 lg:col-span-12 xl:col-span-12 ">
+            <div class="card shadow-none bg-transparent">
+                <div class="card-body p-0">
+                    <div class="h-40 relative p-4 rounded overflow-hidden">
+                        <div class="absolute inset-0 h-40 rounded">
+                            <img src="assets/images/widgets/pro-img.png" alt="" class="w-full">
+                        </div>
+                    </div>
+                    <div class="text-center relative  -mt-20 z-10 p-4">
+                        <div class="bg-white rounded-full border-4 border-white w-32 mx-auto">
+                            <!-- <img src="assets/images/users/avatar-6.jpg" alt="" class="rounded-full inline-block"> -->
+                            <img *ngIf="profileIMG" [src]="profileIMG" alt="" class="rounded-full inline-block">
+                            <img *ngIf="!profileIMG" src="assets/images/users/avatar-6.jpg" alt=""
+                                class="rounded-full inline-block">
+                        </div>
+                        <h4 class="font-bold text-xl text-slate-700 mb-0 dark:text-slate-200">{{personalData.companyadminName}}
+                        </h4>
+                        <!-- <p class="text-slate-400 text-sm font-semibold">{{personalData.skills}}</p> -->
+                    </div>
+                </div><!--end card-body-->
+            </div> <!--end card-->
+        </div><!--end col-->
+    </div><!--end inner-grid-->
+    <div class="grid md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4 ">
+        <div class="sm:col-span-12  md:col-span-12 lg:col-span-12 xl:col-span-12 ">
+            <div class="w-full relative overflow-hidden">
+                <div class="p-0 xl:p-4">
+                    <div
+                        class="mb-4 border-b border-dashed border-gray-200 dark:border-gray-700 flex flex-wrap justify-start lg:justify-between">
+                        <ul class="flex flex-wrap mb-5 lg:-mb-px" id="myTab" data-tabs-toggle="#myTabContent">
+                            <!-- <li class="mr-2" role="presentation">
+                                <button
+                                    class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
+                                    id="Profile-tab" data-tabs-target="#Profile" type="button" role="tab"
+                                    aria-controls="Profile" aria-selected="false">Profile</button>
+                            </li>
+                            <li class="mr-2" role="presentation">
+                                <button
+                                    class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
+                                    id="Projects-tab" data-tabs-target="#Projects" type="button" role="tab"
+                                    aria-controls="Projects" aria-selected="false">Projects</button>
+                            </li>
+                            <li class="mr-2" role="presentation">
+                                <button
+                                    class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
+                                    id="Posts-tab" data-tabs-target="#Posts" type="button" role="tab"
+                                    aria-controls="Posts" aria-selected="false">Posts</button>
+                            </li> -->
+                            <li role="presentation">
+                                <button
+                                    class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
+                                    id="Settings-tab" data-tabs-target="#Settings" type="button" role="tab"
+                                    aria-controls="Settings" aria-selected="true">{{personalData.companyadminName}}'s
+                                    Profile</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4 mb-4">
+        <div class="col-span-12 md:col-span-12 lg:col-span-9">
+            <div class="w-full relative overflow-hidden">
+                <div class="p-0 xl:p-4">
+                    <div id="myTabContent">
+
+
+
+                        <div class="hidden" id="Settings" role="tabpanel" aria-labelledby="Settings-tab">
+                            <div class="grid md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4">
+                                <div class="col-span-12 md:col-span-12 lg:col-span-12 xl:col-span-12">
+                                    <div class="card">
+
+
+                                        <div class="card-body">
+                                            <form [formGroup]="profile">
+                                                <div class="grid md:grid-cols-12 lg:grid-cols-12">
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="Your_Name" class="label">Your Name</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9 mb-2">
+                                                        <input type="text" [formControl]="profile.controls['companyadminName']"
+                                                            name="companyadminName" id="Your_Name" class="form-control"
+                                                            value="Rosa" placeholder="Your name" required>
+                                                    </div>
+
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="Company_Name" class="label">Company Name</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <input type="text"
+                                                            [formControl]="profile.controls['companyName']"
+                                                            name="companyName" id="Company_Name" class="form-control"
+                                                            value=" " placeholder="Last name" required>
+                                                    </div>
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="DOB" class="label">Date of Birth</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <input type="date" [formControl]="profile.controls['dob']"
+                                                            name="dob" id="DOB" class="form-control" value="" required>
+                                                    </div>
+
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="genders" class="label">Gender</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <select id="genders" [formControl]="profile.controls['gender']"
+                                                            name="gender"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 focus-visible:outline-none dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                            <option value="male">Male</option>
+                                                            <option value="female" selected>Female</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="Contact_Phone" class="label">Contact Phone</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <input type="text"
+                                                            [formControl]="profile.controls['companyadminMobileNumber']"
+                                                            name="companyadminMobileNumber" id="Contact_Phone" class="form-control"
+                                                            value="" placeholder="Last name" required>
+                                                    </div>
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="Your_Email" class="label">Your email</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <input type="email" [formControl]="profile.controls['companyadminEmail']"
+                                                            name="companyadminEmail" id="Your_Email" class="form-control" value=""
+                                                            placeholder="Last name" required>
+                                                    </div>
+
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="marital" class="label">Marital Status</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <select id="marital"
+                                                            [formControl]="profile.controls['maritalstatus']"
+                                                            name="maritalstatus"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 focus-visible:outline-none dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                            <option value="single">Single</option>
+                                                            <option value="married" selected>Married</option>
+                                                            <option value="divorced" selected>Divorced</option>
+                                                            <option value="widowed" selected>Widowed</option>
+                                                            <option value="separated" selected>Separated</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="Contact_Phone" class="label">Website Link</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <input type="text"
+                                                            [formControl]="profile.controls['websiteLink']"
+                                                            name="websiteLink" id="Contact_Phone" class="form-control"
+                                                            value="" placeholder="Website Link" required>
+                                                    </div>
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="Address" class="label">Address</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <textarea [formControl]="profile.controls['address']"
+                                                            name="address" id="Address" class="form-control" value=""
+                                                            placeholder="Address" required></textarea>
+                                                    </div>
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="countries" class="label">Country</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <select id="countries"
+                                                            [formControl]="profile.controls['country']" name="country"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 focus-visible:outline-none dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                            <option value="US">United States</option>
+                                                            <option value="Canada" selected>Canada</option>
+                                                            <option value="India">India</option>
+                                                            <option value="France">France</option>
+                                                            <option value="Germany">Germany</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <!-- <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="EmployeeID" class="label">Employee Id</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <input type="text"
+                                                            [formControl]="profile.controls['employeeid']"
+                                                            name="employeeid" id="EmployeeID" class="form-control"
+                                                            value="" placeholder="Employee ID" required>
+                                                    </div> -->
+
+                                                    <!-- <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="Job_Title" class="label">Job Title</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <input type="text" [formControl]="profile.controls['jobtitle']"
+                                                            name="jobtitle" id="Job_Title" class="form-control" value=""
+                                                            placeholder="Job Title" required>
+                                                    </div> -->
+
+                                                    <!-- <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="departments" class="label">Department</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <input type="text"
+                                                            [formControl]="profile.controls['department']"
+                                                            name="department" id="departments" class="form-control"
+                                                            value="" placeholder="Department" required>
+                                                    </div> -->
+
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="joiningDate" class="label">Date of Joining</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <input type="date"
+                                                            [formControl]="profile.controls['dateofjoining']"
+                                                            name="dateofjoining" id="joiningDate" class="form-control"
+                                                            value="" placeholder="" required>
+                                                    </div>
+
+                                                    <!-- <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="Employment_Type" class="label">Employment
+                                                            Type</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <select id="Employment_Type"
+                                                            [formControl]="profile.controls['employmenttype']"
+                                                            name="employmenttype"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-slate-700 dark:border-slate-600 focus-visible:outline-none dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                            <option value="full-time" selected>Full-time</option>
+                                                            <option value="part-time">Part-time</option>
+                                                            <option value="contract">Contract</option>
+                                                        </select>
+                                                    </div> -->
+                                                    <!-- <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="managerName" class="label">Supervisor/</label>
+                                                        <label for="managerName" class="label">Manager Name</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <input type="text"
+                                                            [formControl]="profile.controls['supervisorormanagerName']"
+                                                            name="supervisorormanagerName" id="managerName"
+                                                            class="form-control" value="" placeholder="" required>
+                                                    </div> -->
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="language_Spoken" class="label">Language
+                                                            Spoken</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <input type="text"
+                                                            [formControl]="profile.controls['languagespoken']"
+                                                            name="languagespoken" id="language_Spoken"
+                                                            class="form-control" value="" placeholder="Language Spoken"
+                                                            required>
+                                                    </div>
+                                                    <div
+                                                        class="col-span-12 md:col-span-12 lg:col-span-3 self-center text-right mr-2">
+                                                        <label for="otherinfo" class="label">Any other Relevant
+                                                            Information</label>
+                                                    </div>
+                                                    <div class="col-span-12 md:col-span-12 lg:col-span-9  mb-2">
+                                                        <input type="text"
+                                                            [formControl]="profile.controls['otherrelevantinformation']"
+                                                            name="otherrelevantinformation" id="otherinfo"
+                                                            class="form-control" value="" placeholder="" required>
+                                                    </div>
+
+                                                    <div class=" col-start-4 col-end-13  mb-2">
+                                                        <button type="submit" (click)="updatePersonalData()"
+                                                            class="btn bg-blue-500 text-white hover:bg-blue-600">Submit</button>
+                                                        <button type="submit"
+                                                            class="btn bg-red-500 text-white hover:bg-red-600">Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <!-- <div class="col-span-12 md:col-span-12 lg:col-span-6 xl:col-span-6">
+                                    <div class="card">
+                                        <div class="card-body border-b rounded border-dashed dark:border-gray-700">
+                                            <h6 class="font-semibold text-sm uppercase text-slate-400">
+                                                {{personalData.userName}}'s Skills</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div [formGroup]="skillsForm">
+                                                <div formArrayName="skills">
+                                                    <div class="skillinROW"
+                                                        *ngFor="let skill of skills.controls; let i = index"
+                                                        [formGroupName]="i">
+                                                        <input class="form-control skillinput" formControlName="name"
+                                                            placeholder="Enter skill" />
+                                                        <button
+                                                            class="btn bg-blue-500 text-white hover:bg-blue-600 mr-2 skillbutton"
+                                                            (click)="removeSkill(i)">Remove</button>
+                                                    </div>
+                                                </div>
+                                                <button class="btn bg-blue-500 text-white hover:bg-blue-600 mr-2"
+                                                    (click)="addSkill()">Add Skill</button>
+                                                <button class="btn bg-blue-500 text-white hover:bg-blue-600 mr-2"
+                                                    (click)="logSkills()">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-body border-b rounded border-dashed dark:border-gray-700">
+                                            <h4 class="font-semibold text-sm uppercase text-slate-400">
+                                                {{personalData.userName}}'s Qualities</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-none">
+                                                <li class="mb-2 contentinrow"
+                                                    *ngFor="let quality of employeeQuality; let i = index"><i
+                                                        class="fa-solid fa-hand-point-right text-slate-400 mr-2"></i>
+                                                    <span *ngIf="!quality.isVisible"
+                                                        class="text-slate-500 text-sm">{{quality.quality}}
+                                                    </span>
+                                                    <div class="editQualitybtn1 contentinrow1"
+                                                        *ngIf="quality.email === myEmail">
+                                                        <textarea *ngIf="quality.isVisible"
+                                                            [(ngModel)]="quality.quality" name="qualityforupdate"
+                                                            id="qualityforupdate" class="form-control mr-3"></textarea>
+                                                    </div>
+                                                    <div class="editQualitybtn1 contentinrow2"
+                                                        *ngIf="quality.email == myEmail">
+                                                        
+                                                        <button *ngIf="quality.isVisible"
+                                                            (click)="updateQuality(quality.quality, personalData.email)"
+                                                            class="btn bg-blue-500 text-white hover:bg-blue-600 mr-3"><i
+                                                                class="fa-solid fa-save"></i>
+                                                        </button>
+                                                        <button *ngIf="!quality.isVisible"
+                                                            class="btn bg-blue-500 text-white hover:bg-blue-600 mr-3"
+                                                            (click)="toggleVisibility(i)"><i
+                                                                class="fa-solid fa-pencil"></i></button>
+                                                        <button *ngIf="!quality.isVisible"
+                                                            class="btn bg-red-500 text-white hover:bg-red-600 mr-3"
+                                                            (click)="deletequality(quality.id, personalData.email)"><i
+                                                                class="fa-solid fa-trash"></i></button>
+                                                        <button *ngIf="quality.isVisible"
+                                                            class="btn bg-red-500 text-white hover:bg-red-600 "
+                                                            (click)="toggleVisibility(i)"><i
+                                                                class="fa-solid fa-cancel"></i></button>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-12 md:col-span-12 lg:col-span-3 mt-4">
+            <div class="card">
+                <div class="card-body border-b rounded border-dashed dark:border-gray-700">
+                    <h6 class="font-semibold text-sm uppercase text-slate-400">About</h6>
+                </div>
+                <div class="card-body">
+
+                    <ul class="list-none">
+                        <!-- <li class="mb-2">
+                            <span class="text-slate-500 text-sm">Employee ID: {{personalData.employeeid}}</span>
+                        </li> -->
+                        <!-- <li class="mb-2">
+                            <span class="text-slate-500 text-sm">Job Title: {{personalData.jobtitle}}</span>
+                        </li> -->
+                        <!-- <li class="mb-2">
+                            <span class="text-slate-500 text-sm">Department: {{personalData.department}}</span>
+                        </li> -->
+                        <li class="mb-2">
+                            <span class="text-slate-500 text-sm">Date of Joining: {{personalData.dateofjoining}}</span>
+                        </li>
+                        <!-- <li class="mb-2">
+                            <span class="text-slate-500 text-sm">Employment Type: {{personalData.employmenttype}}</span>
+                        </li> -->
+                        <!-- <li class="mb-2">
+                            <span class="text-slate-500 text-sm">Supervisor/Manager Name:
+                                {{personalData.supervisorormanagerName}}</span>
+                        </li> -->
+                        <li class="mb-2">
+                            <span class="text-slate-500 text-sm">Language Spoken: {{personalData.languagespoken}}</span>
+                        </li>
+                        <li class="mb-2">
+                            <span class="text-slate-500 text-sm">Other Relevant Information:
+                                {{personalData.otherrelevantinformation}}</span>
+                        </li>
+                        <li class="mb-2">
+                            <span class="text-slate-500 text-sm">Gender: {{personalData.gender}}</span>
+                        </li>
+                        <li class="mb-2">
+                            <span class="text-slate-500 text-sm">Marital Status: {{personalData.maritalstatus}}</span>
+                        </li>
+                        <li class="mb-2"><i class="fa-solid fa-cake-candles text-slate-400 mr-2"></i>
+                            <span class="text-slate-500 text-sm">{{personalData.dob}}</span>
+                        </li>
+                        <li class="mb-2"><i class="fa-solid fa-location-dot text-slate-400 mr-2"></i>
+                            <span class="text-slate-500 text-sm">{{personalData.address}}</span>
+                        </li>
+                        <li class="mb-2"><i class="far fa-flag text-slate-400 mr-2"></i>
+                            <span class="text-slate-500 text-sm">{{personalData.country}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body border-b rounded border-dashed dark:border-gray-700">
+                    <h6 class="font-semibold text-sm uppercase text-slate-400">Contact</h6>
+                </div>
+                <div class="card-body">
+                    <ul class="list-none mb-3">
+                        <li class="mb-2"><i class="fa-solid fa-phone text-slate-400 mr-2"></i>
+                            <span class="text-slate-500 text-sm">{{personalData.companyadminMobileNumber}}</span>
+                        </li>
+                        <li class="mb-2"><i class="fa-regular fa-envelope text-slate-400 mr-2"></i>
+                            <span class="text-slate-500 text-sm">{{personalData.companyadminEmail}}</span>
+                        </li>
+                    </ul>
+                    <button
+                        class="py-1 px-2 text-sm font-medium text-blue-500 bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <i class="ti ti-brand-facebook   text-base"></i>
+                    </button>
+                    <button
+                        class="py-1 px-2 text-sm font-medium text-red-500 bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-red-500 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <i class="ti ti-brand-google   text-base"></i>
+                    </button>
+                    <button
+                        class="py-1 px-2 text-sm font-medium text-sky-500 bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-sky-500 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <i class="ti ti-brand-twitter   text-base"></i>
+                    </button>
+                    <button
+                        class="py-1 px-2 text-sm font-medium text-orange-500 bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-orange-500 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        <i class="ti ti-brand-instagram   text-base"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="grid grid-cols-12 md:grid-cols-12 lg:grid-cols-12 xl:grid-cols-12 gap-4 mb-4">
+
+        <div class="col-span-12 md:col-span-12 lg:col-span-12 mt-4">
+            <div class="card">
+                <div class="card-body border-b rounded border-dashed dark:border-gray-700">
+                    <h6 class="font-semibold text-sm uppercase text-slate-400">Add Qualities</h6>
+                </div>
+                <div class="card-body">
+
+                    <form [formGroup]="qualities">
+                        <div class="col-span-12 md:col-span-12 lg:col-span-10  mb-2">
+                            <textarea [formControl]="qualities.controls['quality']" name="quality" id="Quality"
+                                class="form-control" placeholder="Add Quality"></textarea>
+                        </div>
+                        <div class="col-start-4 col-end-13  mb-2">
+                            <button type="submit" (click)="addQuality(personalData.email)"
+                                class="btn bg-blue-500 text-white hover:bg-blue-600">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+
+    <app-superadmin-footer></app-superadmin-footer>
+</div>

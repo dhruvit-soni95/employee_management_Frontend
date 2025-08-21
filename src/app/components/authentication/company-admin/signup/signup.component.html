@@ -1,0 +1,84 @@
+<div class="relative flex flex-col justify-center min-h-screen overflow-hidden">
+    <div
+        class="w-full  m-auto bg-white dark:bg-slate-800/60 rounded shadow-lg ring-2 ring-slate-300/50 dark:ring-slate-700/50 lg:max-w-md">
+        <div class="text-center p-6 bg-slate-900 rounded-t">
+            <a href="index.html"><img src="assets/images/logo-sm.png" alt="" class="w-14 h-14 mx-auto mb-2"></a>
+            <h3 class="font-semibold text-white text-xl mb-1">Company Admin Sign Up</h3>
+            <p class="text-xs text-slate-400">Sign in to continue to T-Wind.</p>
+        </div>
+
+        <form class="p-6" [formGroup]="register">
+            <div>
+                <label for="Company_Name" class="label">Company Name</label>
+                <input type="text" [formControl]="register.controls['companyName']" name="companyName" id="Company_Name"
+                    class="form-control dark:bg-slate-800/60 dark:border-slate-700/50" placeholder="Enter Company Name"
+                    required>
+                <small *ngIf="register.controls.companyName.touched && register.controls.companyName.errors?.required"
+                    style="color: orangered;">Company Name is required.</small>
+            </div>
+            <div>
+                <label for="User_Name" class="label">Company Admin Name</label>
+                <input type="text" [formControl]="register.controls['companyAdminName']" name="companyAdminName"
+                    id="User_Name" class="form-control dark:bg-slate-800/60 dark:border-slate-700/50"
+                    placeholder="Enter Name" required>
+                <small
+                    *ngIf="register.controls.companyAdminName.touched && register.controls.companyAdminName.errors?.required"
+                    style="color: orangered;">Company Admin Name is required.</small>
+            </div>
+            <div>
+                <label for="email" class="label">Company Admin Email</label>
+                <input type="email" [formControl]="register.controls['companyAdminemail']" name="companyAdminemail"
+                    id="email" class="form-control  dark:bg-slate-800/60 dark:border-slate-700/50"
+                    placeholder="Enter Email" required>
+                <small
+                    *ngIf="register.controls.companyAdminemail.touched && register.controls.companyAdminemail.errors?.required"
+                    style="color: orangered;">Email is required.</small>
+                <small
+                    *ngIf="register.controls.companyAdminemail.touched && register.controls.companyAdminemail.errors?.pattern"
+                    style="color: orangered;">Invalid email format.</small>
+            </div>
+            <div class="mt-4">
+                <label for="password" class="label">Your password</label>
+
+                <div style="display: flex; flex-direction: row;">
+                    <input [type]="passwordFieldType" [formControl]="register.controls['companyAdminpassword']"
+                        name="companyAdminpassword" id="password"
+                        class="form-control  dark:bg-slate-800/60 dark:border-slate-700/50" placeholder="Enter Password"
+                        required>
+                    <i *ngIf="passwordFieldType === 'password'" (click)="togglePasswordVisibility()"
+                        class="fa-solid fa-eye text-slate-400 mr-2"></i>
+                    <i *ngIf="passwordFieldType === 'text'" (click)="togglePasswordVisibility()"
+                        class="fa-solid fa-eye-slash text-slate-400 mr-2"></i>
+                </div>
+                <small
+                    *ngIf="register.controls.companyAdminpassword.touched && register.controls.companyAdminpassword.errors?.required"
+                    style="color: orangered;">Password is required.</small>
+            </div>
+            <div class="mt-4">
+                <label for="Mobile_Number" class="label">Company Admin Mobile Number</label>
+                <input type="text" id="Mobile_Number" [formControl]="register.controls['companyAdminmobileNumber']"
+                    name="companyAdminmobileNumber" class="form-control  dark:bg-slate-800/60 dark:border-slate-700/50"
+                    placeholder="Enter Mobile Number" required>
+                <small
+                    *ngIf="register.controls.companyAdminmobileNumber.touched && register.controls.companyAdminmobileNumber.errors?.required"
+                    style="color: orangered;">Company Admin Mobile is required.</small>
+            </div>
+            <div class="mt-3">
+            <re-captcha (resolved)="resolved($event)" siteKey="6LfpeiAqAAAAAIlIb204dThLc15Q61SjB7zJR2hQ"></re-captcha>
+        </div>
+            <div class="mt-6">
+                <button *ngIf="register.invalid" [disabled]="true" type="submit" (click)="registration()"
+                    class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red-500 rounded-md hover:bg-red-600 focus:outline-none focus:bg-blue-600">
+                    Register
+                </button>
+                <button *ngIf="!register.invalid" type="submit" (click)="registration()"
+                    class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+                    Register
+                </button>
+            </div>
+        </form>
+        <p class="mb-5 text-sm font-medium text-center text-slate-500"> Already have an account ? <a
+                routerLink="/company-login" class="font-medium text-blue-600 hover:underline">Log in</a>
+        </p>
+    </div>
+</div>

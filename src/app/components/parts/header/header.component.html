@@ -1,0 +1,56 @@
+<nav class="border-gray-200 bg-gray-900 px-2.5 py-2.5 shadow-sm dark:bg-slate-800 sm:px-4 block print:hidden">
+    <div class="container mx-0 flex max-w-full flex-wrap items-center lg:mx-auto">
+        <div class="flex items-center">
+            <a routerLink="/" class="flex items-center outline-none">
+                <!-- h-6 -->
+                <img src="assets/images/Param-Logo-Light-x2-removebg-preview.png" alt="" width="100" height="50" class="" />
+                <!-- <img src="assets/images/Param-Logo-Light-x2-removebg-preview.png" alt="" class="ml-2 hidden xl:block mt-1" /> -->
+            </a>
+        </div>
+
+        <div class="order-2 hidden w-full items-center justify-between md:order-1 md:ml-5 md:flex md:w-auto"
+            id="mobile-menu-2">
+            <ul
+                class="font-body mt-4 flex flex-col font-medium md:mt-0 md:flex-row md:text-sm md:font-medium space-x-0 md:space-x-4 lg:space-x-6 xl:space-x-8 navbar">
+                <li class="dropdown">
+                    <button id="navDashboardLink" data-dropdown-toggle="navDashboard" (click)="Home()"
+                        class="dropdown-toggle flex w-full items-center border-b border-gray-800 py-2 px-3 font-medium md:border-0 md:p-0">
+                        Home
+                    </button>                   
+                </li>
+                <!-- <li>
+                    <button id="navAuthLink" data-dropdown-toggle="navAuth" (click)="Login()"
+                        class="dropdown-toggle flex w-full items-center border-b border-gray-800 py-2 px-3 font-medium md:border-0 md:p-0">
+                        Login
+                    </button>
+                </li>
+                <li>
+                    <button id="navAuthLink" data-dropdown-toggle="navAuth" (click)="Register()"
+                        class="dropdown-toggle flex w-full items-center border-b border-gray-800 py-2 px-3 font-medium md:border-0 md:p-0">
+                        Register
+                    </button>
+                </li> -->
+            </ul>
+        </div>
+        <div class="order-1 ml-auto flex items-center md:order-2">
+            <div class="mr-3 lg:mr-0 dropdown relative">
+                <button type="button" (click)="profile()"
+                    class="dropdown-toggle flex items-center rounded-full text-sm focus:bg-none focus:ring-0 dark:focus:ring-0 md:mr-0"
+                    id="user-profile" aria-expanded="false" data-dropdown-toggle="navUserdata">
+                    <img class="h-8 w-8 rounded-full" src="assets/images/users/avatar-1.jpg" alt="user photo" />
+                    <span class="ml-2 hidden text-left xl:block">
+                        <span class="block font-medium text-gray-400">{{personalData.userName}}</span>
+                        <span class="-mt-1 block text-sm font-medium text-gray-500">{{personalData.email}}</span>
+                    </span>
+                </button>
+            </div>
+
+            <div class="ml-3 lg:mr-4">
+                <button id="toggle-theme" class="flex rounded-full md:mr-0 relative" (click)="logout()">
+                    <i class="ti ti-logout top-icon"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</nav>
